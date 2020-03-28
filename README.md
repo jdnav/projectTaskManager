@@ -1,4 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This project allows the user to manage their projects by creating, editing and deleting tasks in each one. Also, the application provides authentication with JWT.
+
+## Tech scope: MERN
+- MongoDB
+- Express.js
+- React
+- Node.js
+
+## React scope
+React hooks + Context over Redux
 
 ## Available Scripts
 
