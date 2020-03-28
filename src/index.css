@@ -155,7 +155,7 @@ aside  {
   margin-right: 2rem;
 }
 
-/** form crear y editar tareas **/
+/** form crear y editar tasks **/
 .form {
   background-color: var(--gris3);
   padding: 4rem;
@@ -191,7 +191,7 @@ aside  {
   margin: 0 auto;
 }
 
-.tarea {
+.task {
   display: flex;
   justify-content: space-between;
   background-color: var(--blanco);
@@ -211,26 +211,26 @@ aside  {
   -moz-box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
   box-shadow: 0px 6px 11px -8px rgba(0,0,0,0.9);
 }
-.tarea .acciones .btn:first-of-type {
+.task .actions .btn:first-of-type {
   margin-right: 1rem;
 }
-.tarea p {
+.task p {
   font-size: 1.6rem;
   flex: 1;
   padding-right: 2rem;
 }
-.tarea .btn {
+.task .btn {
   padding: .8rem;
   font-size:1.4rem;
   border-radius: 0;
   margin: 0;
 }
 
-.estado {
+.state {
   margin-right: 1rem;
 }
-.estado button, 
-.mensaje {
+.state button, 
+.message {
   font-weight: 900;
   font-family: var(--textFont);
   font-size: 1rem;
@@ -239,20 +239,20 @@ aside  {
   cursor: pointer;
   border: none;
 }
-.mensaje {
+.message {
   text-align: center;
   font-size: 1.6rem;
   border-radius: 0;
 }
-.mensaje:hover {
+.message:hover {
   cursor: default;
 }
-.completo,
-.correcto {
+.completed,
+.corrected {
   background-color: rgba(154, 252, 154, .3);
   color: var(--gris3);
 }
-.incompleto{
+.incompleted{
   background-color: rgba(255, 178, 178, .4);
   color: var(--gris3);
 }
@@ -265,20 +265,20 @@ aside  {
 
 
 
-.tarea-enter,
+.task-enter,
 .project-enter {
   opacity: 0;
 }
-.tarea-enter-active,
+.task-enter-active,
 .project-enter-active {
   opacity: 1;
   transition: opacity 200ms;
 }
-.tarea-exit,
+.task-exit,
 .project-exit {
   opacity: 1;
 }
-.tarea-exit-active,
+.task-exit-active,
 .project-exit-active {
   opacity: 0;
   transition: opacity 200ms;
