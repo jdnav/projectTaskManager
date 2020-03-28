@@ -98,7 +98,7 @@ a {
       background-color: var(--blanco);
       flex: 0 0 300px;
   }
-  .seccion-principal {
+  .main-section {
       flex: 1;
   }
 
@@ -110,24 +110,24 @@ aside  {
   padding: 3rem;
 }
 
-.formulario-nuevo-proyecto {
+.form-add-project {
   margin-top: 6rem;
 }
-.formulario-nuevo-proyecto .input-text {
+.form-add-project .input-text {
   border-bottom: 1px solid var(--gris2);
   border-radius: 0;
   background-color: var(--gris1);
 }
-.formulario-nuevo-proyecto .input-text::placeholder{
+.form-add-project .input-text::placeholder{
   color: var(--gris2);
 }
-.proyectos {
+.projects {
   margin-top: 10rem;
 }
-.listado-proyectos li {
+.list-projects li {
   margin-bottom: 2rem;
 }
-.listado-proyectos li a {
+.list-projects li a {
   font-size: 1.4rem;
   color: var(--gris2);
   line-height: 1.5;
@@ -155,12 +155,12 @@ aside  {
   margin-right: 2rem;
 }
 
-/** Formulario crear y editar tareas **/
-.formulario {
+/** form crear y editar tareas **/
+.form {
   background-color: var(--gris3);
   padding: 4rem;
 }
-.formulario form {
+.form form {
   max-width: 600px;
   margin: 0 auto;
 }
@@ -180,13 +180,13 @@ aside  {
 }
 
 /** TAREAS LISTADO **/
-.container-tareas {
+.container-tasks {
   padding: 4rem;
 }
 
 
 
-.listado-tareas {
+.listado-tasks {
   max-width: 600px;
   margin: 0 auto;
 }
@@ -266,20 +266,20 @@ aside  {
 
 
 .tarea-enter,
-.proyecto-enter {
+.project-enter {
   opacity: 0;
 }
 .tarea-enter-active,
-.proyecto-enter-active {
+.project-enter-active {
   opacity: 1;
   transition: opacity 200ms;
 }
 .tarea-exit,
-.proyecto-exit {
+.project-exit {
   opacity: 1;
 }
 .tarea-exit-active,
-.proyecto-exit-active {
+.project-exit-active {
   opacity: 0;
   transition: opacity 200ms;
 }
