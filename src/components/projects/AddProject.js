@@ -1,6 +1,11 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react';
+import projectContext from "../../context/projects/projectContext";
 
 export const AddProject = () => {
+
+    // Get form State with the hook useContext
+    const projectsContext = useContext(projectContext);
+    const { form } = projectsContext;
 
     // State for Project
     const [project, addProject] = useState({
@@ -36,25 +41,32 @@ export const AddProject = () => {
             >
                 Add project
             </button>
-            <form
-                className="form-add-project"
-                onSubmit={onSubmitProject}
-            >
-                <input
-                    type="text"
-                    className="input-text"
-                    placeholder="Project Name"
-                    name="nombre"
-                    value={name}
+            {
+                form
+                    ?
+                    (
+                        <form
+                            className="form-add-project"
+                            onSubmit={onSubmitProject}
+                        >
+                            <input
+                                type="text"
+                                className="input-text"
+                                placeholder="Project Name"
+                                name="nombre"
+                                value={name}
 
-                ></input>
-                <input
-                    type="submit"
-                    className="btn btn-primary btn-block"
-                    value="Add project"
-                    onChange={onChangeProject}
-                ></input>
-            </form>
+                            ></input>
+                            <input
+                                type="submit"
+                                className="btn btn-primary btn-block"
+                                value="Add project"
+                                onChange={onChangeProject}
+                            ></input>
+                        </form>
+                    )
+                    : null
+            }
         </Fragment>
     )
 }
