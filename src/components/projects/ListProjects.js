@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Project from './Project';
+import projectContext from "../../context/projects/projectContext";
+
 
 // {project} = PROPS 
 export const ListProjects = () => {
 
-const projects = [
-    {name: `name 1 project`},
-    {name: `name 2 project`},
-    {name: `name 3 project`}
-]
+    // Get projects from State with the hook useContext
+    const projectsContext = useContext(projectContext);
+    const { projects } = projectsContext;
+
+    // For satety
+    if (projects.length === 0) return null;
 
     return (
         <ul className="list-projects">

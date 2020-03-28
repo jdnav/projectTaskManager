@@ -5,7 +5,7 @@ export const AddProject = () => {
 
     // Get form State with the hook useContext
     const projectsContext = useContext(projectContext);
-    const { form } = projectsContext;
+    const { form, displayForm } = projectsContext;
 
     // State for Project
     const [project, addProject] = useState({
@@ -33,11 +33,16 @@ export const AddProject = () => {
         // reboot form
     }
 
+    const onClickAddForm = () => {
+        displayForm();
+    }
+
     return (
         <Fragment>
             <button
                 type="button"
                 className="btn btn-block btn-primary"
+                onClick={onClickAddForm}
             >
                 Add project
             </button>
