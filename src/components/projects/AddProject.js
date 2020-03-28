@@ -5,10 +5,10 @@ export const AddProject = () => {
 
     // Get form State with the hook useContext
     const projectsContext = useContext(projectContext);
-    const { form, displayForm } = projectsContext;
+    const { form, displayForm, addProject } = projectsContext;
 
     // State for Project
-    const [project, addProject] = useState({
+    const [project, saveProject] = useState({
         name: ''
     });
 
@@ -17,7 +17,7 @@ export const AddProject = () => {
 
     // Read form
     const onChangeProject = e => {
-        addProject({
+        saveProject({
             ...project,
             [e.target.name]: e.target.value
         });
@@ -27,10 +27,17 @@ export const AddProject = () => {
     const onSubmitProject = e => {
         e.preventDefault();
         // validate project
+        if (name === '') {
+            return;
+        }
 
         // add to state
+        addProject(project)
 
         // reboot form
+        saveProject({
+            name: ''
+        })
     }
 
     const onClickAddForm = () => {
@@ -58,15 +65,15 @@ export const AddProject = () => {
                                 type="text"
                                 className="input-text"
                                 placeholder="Project Name"
-                                name="nombre"
+                                name="name"
                                 value={name}
+                                onChange={onChangeProject}
 
                             ></input>
                             <input
                                 type="submit"
                                 className="btn btn-primary btn-block"
                                 value="Add project"
-                                onChange={onChangeProject}
                             ></input>
                         </form>
                     )

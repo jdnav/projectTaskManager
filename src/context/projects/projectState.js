@@ -3,16 +3,19 @@ import projectContext from './projectContext';
 import projectReducer from './projectReducer';
 import {
     FORM_PROJECT,
-    GET_PROJECTS
+    GET_PROJECTS,
+    ADD_PROJECTS
 } from '../../types';
-
-const projects = [
-    { id: 1, name: `name 1 project` },
-    { id: 2, name: `name 2 project` },
-    { id: 3, name: `name 333 project` }
-];
+import { v4 as uuid } from 'uuid';
 
 const ProjectState = props => {
+
+    const projects = [
+        { id: 1, name: `name 1 project` },
+        { id: 2, name: `name 2 project` },
+        { id: 3, name: `name 3 project` }
+    ];
+
     const initialState = {
         form: false,
         projects: []
@@ -30,13 +33,21 @@ const ProjectState = props => {
     }
 
     // Display form DISPATCH
-    const getProjects = (projects) => {
+    const getProjects = () => {
         dispatch({
             type: GET_PROJECTS,
             payload: projects
         })
     }
+
     // CRUD functions
+    const addProject = project => {
+        project.id = uuid();
+        dispatch({
+            type: ADD_PROJECTS,
+            payload: project
+        })
+    }
 
     // It creates provider
     // {props.children} = All children are consumers
@@ -46,7 +57,9 @@ const ProjectState = props => {
             value={{
                 form: state.form,
                 projects: state.projects,
-                displayForm
+                displayForm,
+                getProjects,
+                addProject
             }}>
             {props.children}
         </projectContext.Provider>
