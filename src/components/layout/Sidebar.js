@@ -5,7 +5,7 @@ import ListProjects from "../projects/ListProjects";
 const Sidebar = () => {
     return (
         <aside>
-            <h2>Project<span>Taks</span></h2>
+            <h1>ProjectTask <span>Manager</span></h1>
             <AddProject />
             <div className="projects">
                 <h3>Your Projects</h3>
