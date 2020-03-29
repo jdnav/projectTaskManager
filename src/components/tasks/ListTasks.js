@@ -1,7 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Task from "../tasks/Task";
+import projectContext from "../../context/projects/projectContext";
 
 const ListTasks = () => {
+
+
+    // Get form State with the hook useContext
+    const projectsContext = useContext(projectContext);
+    const { currentProject } = projectsContext;
+
+    // If no project selected
+    if (!currentProject) return <h2>Select a project</h2>
+
+    // Array destructuring to get current project
+    const [getCurrentProject] = currentProject;
 
     const ProjectTasks = [
         { name: 'Task 1', state: true },
@@ -13,7 +25,7 @@ const ListTasks = () => {
 
     return (
         <Fragment>
-            <h3>Task list</h3>
+            <h2>Task list for <span>{getCurrentProject.name}</span></h2>
 
             <ul className="list-tasks">
                 {ProjectTasks.length === 0
