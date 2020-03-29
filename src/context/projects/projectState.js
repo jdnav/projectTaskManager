@@ -4,7 +4,9 @@ import projectReducer from './projectReducer';
 import {
     FORM_PROJECT,
     GET_PROJECTS,
-    ADD_PROJECTS
+    ADD_PROJECTS,
+    VALIDATE_PROJECT_FORM,
+    CURRENT_PROJECT
 } from '../../types';
 import { v4 as uuid } from 'uuid';
 
@@ -18,7 +20,9 @@ const ProjectState = props => {
 
     const initialState = {
         form: false,
-        projects: []
+        projects: [],
+        errorForm: false,
+        currentProject: ''
     }
 
     // Dispatch to execute actions
@@ -49,6 +53,21 @@ const ProjectState = props => {
         })
     }
 
+    // Display error when name of project is invalid
+    const displayError = () => {
+        dispatch({
+            type: VALIDATE_PROJECT_FORM
+        })
+    }
+
+    // Select project clicked
+    const getCurrentProject = (projectId) => {
+        dispatch({
+            type: CURRENT_PROJECT,
+            payload: projectId
+        })
+    }
+
     // It creates provider
     // {props.children} = All children are consumers
     // It must be imported by App.js
@@ -57,9 +76,13 @@ const ProjectState = props => {
             value={{
                 form: state.form,
                 projects: state.projects,
+                errorForm: state.errorForm,
+                currentProject: state.currentProject,
                 displayForm,
                 getProjects,
-                addProject
+                addProject,
+                displayError,
+                getCurrentProject
             }}>
             {props.children}
         </projectContext.Provider>
