@@ -22,7 +22,7 @@ export const ListProjects = () => {
     }, []);
 
     // For satety
-    if (projects.length === 0) return null;
+    if (projects.length === 0) return <p>No projects yet. Add one to start!</p>;
 
 
     return (

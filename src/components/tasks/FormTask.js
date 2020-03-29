@@ -11,7 +11,7 @@ const FormTask = () => {
     if (!currentProject) return null;
 
     // Array destructuring to get current project
-    const [getCurrentProject] = currentProject;
+    // const [getCurrentProject] = currentProject;
 
     return (
         <div className="form">

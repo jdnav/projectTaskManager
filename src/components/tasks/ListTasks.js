@@ -6,7 +6,7 @@ const ListTasks = () => {
 
     // Get form State with the hook useContext
     const projectsContext = useContext(projectContext);
-    const { currentProject } = projectsContext;
+    const { currentProject, deleteProject } = projectsContext;
 
     // If no project selected
     if (!currentProject) return <h2>Select a project</h2>
@@ -37,7 +37,8 @@ const ListTasks = () => {
             </ul>
             <button
                 type="button"
-                className="btn btn-delete">
+                className="btn btn-delete"
+                onClick={() => deleteProject(getCurrentProject.id)}>
                 Delete project
             </button>
 
