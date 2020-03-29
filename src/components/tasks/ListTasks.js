@@ -4,7 +4,6 @@ import projectContext from "../../context/projects/projectContext";
 
 const ListTasks = () => {
 
-
     // Get form State with the hook useContext
     const projectsContext = useContext(projectContext);
     const { currentProject } = projectsContext;
