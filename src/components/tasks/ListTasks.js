@@ -1,12 +1,17 @@
 import React, { Fragment, useContext } from 'react';
 import Task from "../tasks/Task";
 import projectContext from "../../context/projects/projectContext";
+import taskContext from "../../context/tasks/taskContext";
 
 const ListTasks = () => {
 
-    // Get form State with the hook useContext
+    // Get PROJECT CONTEXT with the hook useContext
     const projectsContext = useContext(projectContext);
     const { currentProject, deleteProject } = projectsContext;
+
+    // Get TASK CONTEXT with the hook useContext
+    const tasksContext = useContext(taskContext);
+    const { currentProjectTasks } = tasksContext;
 
     // If no project selected
     if (!currentProject) return <h2>Select a project</h2>
@@ -14,22 +19,14 @@ const ListTasks = () => {
     // Array destructuring to get current project
     const [getCurrentProject] = currentProject;
 
-    const ProjectTasks = [
-        { name: 'Task 1', state: true },
-        { name: 'Task 2', state: false },
-        { name: 'Task 3', state: true },
-        { name: 'Task 4', state: true },
-        { name: 'Task 5', state: false }
-    ]
-
     return (
         <Fragment>
             <h2>Task list for <span>{getCurrentProject.name}</span></h2>
 
             <ul className="list-tasks">
-                {ProjectTasks.length === 0
+                {currentProjectTasks.length === 0
                     ? (<li className="task"><p>No tasks yet.</p></li>)
-                    : ProjectTasks.map(taskElement => (
+                    : currentProjectTasks.map(taskElement => (
                         <Task task={taskElement} />
                     ))
 

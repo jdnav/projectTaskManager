@@ -1,5 +1,5 @@
 import React from 'react'
 
-const TaskContext = React.createContext()
+const taskContext = React.createContext()
 
-export default TaskContext
+export default taskContext

@@ -1,14 +1,14 @@
 import {
-    FORM_PROJECT,
+    GET_TASKS_PROJECT,
 
 } from '../../types';
 
 export default (state, action) => {
     switch (action.type) {
-        case FORM_PROJECT:
+        case GET_TASKS_PROJECT:
             return {
                 ...state,
-                form: true
+                currentProjectTasks: state.tasks.filter(task => task.projectId === action.payload)
             }
         default:
             return state;
