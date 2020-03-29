@@ -3,6 +3,7 @@ import taskContext from './taskContext';
 import taskReducer from './taskReducer';
 import {
     GET_TASKS_PROJECT,
+    ADD_TASK
 } from '../../types';
 
 const TaskState = props => {
@@ -32,6 +33,14 @@ const TaskState = props => {
         })
     }
 
+    // ADD task
+    const addTask = task => {
+        dispatch({
+            type: ADD_TASK,
+            payload: task
+        })
+    }
+
 
     // It creates provider
     // {props.children} = All children are consumers
@@ -41,7 +50,8 @@ const TaskState = props => {
             value={{
                 tasks: state.tasks,
                 currentProjectTasks: state.currentProjectTasks,
-                getProjectTasks
+                getProjectTasks,
+                addTask
             }}>
             {props.children}
         </taskContext.Provider>
