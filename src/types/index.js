@@ -9,4 +9,6 @@ export const DELETE_PROJECT = 'DELETE PROJECT';
 // TASKS
 export const GET_TASKS_PROJECT = 'GET TASKS PROJECT';
 export const ADD_TASK = 'ADD TASK';
+export const VALIDATE_TASK_FORM = 'VALIDATE TASK FORM';
+
 

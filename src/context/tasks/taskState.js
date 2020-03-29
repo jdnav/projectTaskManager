@@ -3,7 +3,8 @@ import taskContext from './taskContext';
 import taskReducer from './taskReducer';
 import {
     GET_TASKS_PROJECT,
-    ADD_TASK
+    ADD_TASK,
+    VALIDATE_TASK_FORM
 } from '../../types';
 
 const TaskState = props => {
@@ -18,7 +19,8 @@ const TaskState = props => {
 
     const initialState = {
         tasks: ProjectTasks,
-        currentProjectTasks: null
+        currentProjectTasks: null,
+        errorTask: false
     }
 
     // Create dispatch and state
@@ -41,6 +43,12 @@ const TaskState = props => {
         })
     }
 
+    // Display error when name of task is invalid
+    const displayError = () => {
+        dispatch({
+            type: VALIDATE_TASK_FORM,
+        })
+    };
 
     // It creates provider
     // {props.children} = All children are consumers
@@ -50,8 +58,10 @@ const TaskState = props => {
             value={{
                 tasks: state.tasks,
                 currentProjectTasks: state.currentProjectTasks,
+                errorTask: state.errorTask,
                 getProjectTasks,
-                addTask
+                addTask,
+                displayError
             }}>
             {props.children}
         </taskContext.Provider>

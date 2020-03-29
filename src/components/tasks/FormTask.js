@@ -10,7 +10,7 @@ const FormTask = () => {
 
     // Get TASK CONTEXT with the hook useContext
     const tasksContext = useContext(taskContext);
-    const { addTask } = tasksContext;
+    const { addTask, errorTask, displayError, getProjectTasks } = tasksContext;
 
     // Form State
     const [task, saveTask] = useState({
@@ -39,14 +39,23 @@ const FormTask = () => {
         e.preventDefault();
 
         // validate
+        if (name.trim() === '') {
+            displayError();
+            return;
+        }
 
         // add task
         task.projectId = getCurrentProject.id;
         task.state = false;
         addTask(task);
 
-        // reboot form
+        // Get all tasks again with the new task added
+        getProjectTasks(getCurrentProject.id);
 
+        // reboot form
+        saveTask({
+            name: ''
+        })
     }
 
     return (
@@ -72,6 +81,8 @@ const FormTask = () => {
                     />
                 </div>
             </form>
+
+            {errorTask ? <p className="message error">Name task is required</p> : null}
         </div>
     )
 }
