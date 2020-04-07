@@ -1,14 +1,31 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// alert context 
+// Contexts
 import AlertContext from "../../context/alerts/alertContext";
+import AuthContext from "../../context/auth/authContext";
 
 // Typing "rafce" react arrow function comp with ES7
-const SignUp = () => {
+const SignUp = (props) => {
 
-    // Extract values from alert-context
+    // Extract values from ALERT-context
     const alertContext = useContext(AlertContext);
     const { alert, showAlert } = alertContext;
+
+    // Extract values from AUTH-context
+    const authContext = useContext(AuthContext);
+    const { registerUser, authenticated, message } = authContext;
+
+    // If user is already auth
+    useEffect(() => {
+        if(authenticated) {
+            props.history.push('/projects');
+        }
+
+        if(message) {
+            showAlert(message.msg, message.category);;
+        }
+
+    }, [message, authenticated, props.history])
 
     // State for SignUp
     const [user, saveUser] = useState({
@@ -46,6 +63,7 @@ const SignUp = () => {
         if (password !== confirm) { showAlert('Passwords do not match', 'error'); return }
 
         // dispatch to action
+        registerUser({ name, email, password })
     }
 
     return (
