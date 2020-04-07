@@ -11,4 +11,7 @@ export const GET_TASKS_PROJECT = 'GET TASKS PROJECT';
 export const ADD_TASK = 'ADD TASK';
 export const VALIDATE_TASK_FORM = 'VALIDATE TASK FORM';
 
+// ALERTS
+export const SHOW_ALERT = 'SHOW ALERT';
+export const HIDE_ALERT = 'HIDE ALERT';
 
