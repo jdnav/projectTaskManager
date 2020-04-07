@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+// alert context 
+import AlertContext from "../../context/alerts/alertContext";
 
 // Typing "rafce" react arrow function comp with ES7
 const SignUp = () => {
+
+    // Extract values from alert-context
+    const alertContext = useContext(AlertContext);
+    const { alert, showAlert } = alertContext;
 
     // State for SignUp
     const [user, saveUser] = useState({
@@ -25,15 +31,26 @@ const SignUp = () => {
     // Submit form
     const onSubmit = (e) => {
         e.preventDefault();
+
         // validate empty fields
+        if (name.trim() === '' ||
+            email.trim() === '' ||
+            password.trim() === '' ||
+            confirm.trim() === '') {
+            showAlert('All fields are required', 'error');
+            return;
+        }
 
         // password > 6 && password + confirm OK
+        if (password.length < 6) { showAlert('Password lenght < 6 chars', 'error'); return };
+        if (password !== confirm) { showAlert('Passwords do not match', 'error'); return }
 
         // dispatch to action
     }
 
     return (
         <div className="form-user">
+            {alert ? (<div className={`alert ${alert.category}`}>{alert.msg}</div>) : null}
             <div className="container-form shadow-dark">
                 <h2>Create account</h2>
 
