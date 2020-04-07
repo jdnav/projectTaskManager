@@ -15,3 +15,10 @@ export const VALIDATE_TASK_FORM = 'VALIDATE TASK FORM';
 export const SHOW_ALERT = 'SHOW ALERT';
 export const HIDE_ALERT = 'HIDE ALERT';
 
+// AUTH
+export const SIGNUP_SUCCESS = 'SIGNUP SUCCESS';
+export const SIGNUP_FAILURE = 'SIGNUP FAILURE';
+export const LOGIN_SUCCESS = 'LOGIN SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN FAILURE';
+export const GET_USER = 'GET USER';
+export const LOGOUT = 'LOGOUT';
