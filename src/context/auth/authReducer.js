@@ -17,6 +17,7 @@ export default (state, action) => {
                 message: null
             }
         case SIGNUP_FAILURE:
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,
@@ -27,12 +28,16 @@ export default (state, action) => {
                 alert: action.payload
             }
         case LOGIN_FAILURE:
+            localStorage.removeItem('token');
             return {
-                alert: null
+                ...state,
+                token: null,
+                message: action.payload
             }
         case GET_USER:
             return {
-                alert: action.payload
+                ...state,
+                user: action.payload
             }
         case LOGOUT:
             return {

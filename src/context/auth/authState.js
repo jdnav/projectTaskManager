@@ -11,6 +11,7 @@ import {
 } from '../../types';
 // axios client
 import clientAxios from '../../config/axios';
+import tokenAuth from '../../config/tokenAuth';
 
 const AuthState = props => {
 
@@ -25,7 +26,7 @@ const AuthState = props => {
     // hook
     const [state, dispatch] = useReducer(authReducer, initialState);
 
-    // functions
+    // Register user function
     const registerUser = async data => {
         try {
 
@@ -35,18 +36,43 @@ const AuthState = props => {
             dispatch({
                 type: SIGNUP_SUCCESS,
                 payload: response.data
-            })
+            });
+
+            // Get user info
+            userAuthenticated();
 
         } catch (error) {
-            // console.log(error.response.data.msg);
+            console.log(error);
             // Create alert
             const alert = {
-                msg:error.response.data.msg,
+                msg: error.response.data.msg,
                 category: 'error'
             }
             dispatch({
                 type: SIGNUP_FAILURE,
                 payload: alert
+            })
+        }
+    }
+
+    // Get authenticated user data
+    const userAuthenticated = async () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            // It sets JWT in header
+            tokenAuth(token)
+        }
+
+        try {
+            const response = await clientAxios.get('/api/auth');
+            dispatch({
+                type: GET_USER,
+                payload: response.data.user
+            })
+
+        } catch (error) {
+            dispatch({
+                type: LOGIN_FAILURE
             })
         }
     }
