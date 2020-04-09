@@ -9,15 +9,18 @@ import {
     CURRENT_PROJECT,
     DELETE_PROJECT,
 } from '../../types';
-import { v4 as uuid } from 'uuid';
+// for dev purposes
+// import { v4 as uuid } from 'uuid';
+import clientAxios from "../../config/axios";
 
 const ProjectState = props => {
 
-    const projects = [
-        { id: 1, name: `name 1 project` },
-        { id: 2, name: `name 2 project` },
-        { id: 3, name: `name 3 project` }
-    ];
+    // for dev purposes
+    // const projects = [
+    //     { id: 1, name: `name 1 project` },
+    //     { id: 2, name: `name 2 project` },
+    //     { id: 3, name: `name 3 project` }
+    // ];
 
     const initialState = {
         form: false,
@@ -38,20 +41,30 @@ const ProjectState = props => {
     }
 
     // Display form DISPATCH
-    const getProjects = () => {
-        dispatch({
-            type: GET_PROJECTS,
-            payload: projects
-        })
+    const getProjects = async () => {
+        try {
+            const response = await clientAxios.get('/api/projects')
+            dispatch({
+                type: GET_PROJECTS,
+                payload: response.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     // CRUD functions
-    const addProject = project => {
-        project.id = uuid();
-        dispatch({
-            type: ADD_PROJECTS,
-            payload: project
-        })
+    const addProject = async project => {
+        // project.id = uuid();
+        try {
+            const result = await clientAxios.post('/api/projects', project);
+            dispatch({
+                type: ADD_PROJECTS,
+                payload: result.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     // Display error when name of project is invalid

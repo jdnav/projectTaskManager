@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Project from './Project';
 import projectContext from "../../context/projects/projectContext";
-
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 // {project} = PROPS 
 export const ListProjects = () => {
@@ -27,9 +27,22 @@ export const ListProjects = () => {
 
     return (
         <ul className="list-projects">
-            {projects.map(projectItem => (
-                <Project project={projectItem} />
-            ))}
+
+            {alert ? (<div className={`alert ${alert.category} `}>{alert.msg}</div>) : null}
+
+            <TransitionGroup>
+                {projects.map(project => (
+                    <CSSTransition
+                        key={project._id}
+                        timeout={200}
+                        classNames="project"
+                    >
+                        <Project
+                            project={project}
+                        />
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
         </ul>
     )
 }

@@ -4,7 +4,7 @@ import AuthContext from '../../context/auth/authContext';
 
 // Higher order component
 const PrivateRoute = ({ component: Component, ...props }) => {
-    console.log(props);
+    //console.log(props);
 
     // auth-context
     const authContext = useContext(AuthContext);

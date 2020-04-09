@@ -13,6 +13,7 @@ const Projects = () => {
     const authContext = useContext(AuthContext);
     const { userAuthenticated } = authContext;
 
+    // Called when an event occurs
     useEffect(() => {
         userAuthenticated()
     }, [])
