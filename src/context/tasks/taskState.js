@@ -9,6 +9,7 @@ import {
 
 const TaskState = props => {
 
+    // Dev purposes
     const ProjectTasks = [
         { projectId: 1, name: 'Task 1', state: true },
         { projectId: 1, name: 'Task 11', state: false },
