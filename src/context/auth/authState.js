@@ -46,7 +46,7 @@ const AuthState = props => {
             // Create alert
             const alert = {
                 msg: error.response.data.msg,
-                category: 'error'
+                category: 'alert-error'
             }
             dispatch({
                 type: SIGNUP_FAILURE,
@@ -97,7 +97,7 @@ const AuthState = props => {
             // Create alert
             const alert = {
                 msg: error.response.data.msg,
-                category: 'error'
+                category: 'alert-error'
             }
             dispatch({
                 type: LOGIN_FAILURE,

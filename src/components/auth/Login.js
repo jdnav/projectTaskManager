@@ -49,7 +49,7 @@ const Login = (props) => {
         e.preventDefault();
 
         // validate empty fields
-        if (email.trim() === '' || password.trim() === '') showAlert('All fields are required', 'error')
+        if (email.trim() === '' || password.trim() === '') showAlert('All fields are required', 'alert-error')
 
         // dispatch to action
         login({ email, password });

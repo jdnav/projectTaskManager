@@ -54,13 +54,13 @@ const SignUp = (props) => {
             email.trim() === '' ||
             password.trim() === '' ||
             confirm.trim() === '') {
-            showAlert('All fields are required', 'error');
+            showAlert('All fields are required', 'alert-error');
             return;
         }
 
         // password > 6 && password + confirm OK
-        if (password.length < 6) { showAlert('Password lenght < 6 chars', 'error'); return };
-        if (password !== confirm) { showAlert('Passwords do not match', 'error'); return }
+        if (password.length < 6) { showAlert('Password lenght < 6 chars', 'alert-error'); return };
+        if (password !== confirm) { showAlert('Passwords do not match', 'alert-error'); return }
 
         // dispatch to action
         registerUser({ name, email, password })
