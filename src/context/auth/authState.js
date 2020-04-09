@@ -88,7 +88,7 @@ const AuthState = props => {
                 type: LOGIN_SUCCESS,
                 payload: response.data // It will be "token"
             });
-            
+
             // Get user info
             userAuthenticated();
 
@@ -106,6 +106,13 @@ const AuthState = props => {
         }
     }
 
+    // Log-out
+    const logOut = () => {
+        dispatch({
+            type: LOGOUT
+        })
+    }
+
     return (
         <authContext.Provider
             value={{
@@ -115,7 +122,8 @@ const AuthState = props => {
                 message: state.message,
                 registerUser,
                 userAuthenticated,
-                login
+                login,
+                logOut
             }}
         >
             {props.children}
