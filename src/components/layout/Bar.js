@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react';
+import AuthContext from "../../context/auth/authContext";
 
 export const Bar = () => {
+
+    const authContext = useContext(AuthContext);
+    const { userAuthenticated, user } = authContext;
+
+    useEffect(() => {
+        userAuthenticated()
+    }, [])
+
     return (
         <header className="app-header">
-            <p className="username">Hola <span>Jose</span></p>
-
+            {user ? <p className="username">Hello <span>{user.name}</span></p> : null}
             <nav className="nav-main">
-                 <a href="#!">Log out</a>
+                <a href="#!">Log out</a>
             </nav>
         </header>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/auth/Login';
 import SignUp from './components/auth/SignUp';
-import Projects from './components/auth/Projects';
+import Projects from './components/projects/Projects';
 // States
 import ProjectState from './context/projects/projectState';
 import TaskState from './context/tasks/taskState';

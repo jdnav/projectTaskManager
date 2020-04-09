@@ -18,9 +18,9 @@ const Login = (props) => {
     // If user or psw do not exits
     useEffect(() => {
 
-        // if (authenticated) {
-        //     props.history.push('/projects');
-        // }
+        if (authenticated) {
+            props.history.push('/projects');
+        }
 
         if (message) {
             showAlert(message.msg, message.category);;

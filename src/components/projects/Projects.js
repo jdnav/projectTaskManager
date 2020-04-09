@@ -5,14 +5,13 @@ import FormTask from "../tasks/FormTask";
 import ListTasks from "../tasks/ListTasks";
 // Context
 import AuthContext from "../../context/auth/authContext";
-import authContext from '../../context/auth/authContext';
 
 // Typing "rafce" react arrow function comp with ES7
 const Projects = () => {
 
     // Auth info
-    const authToken = useContext(AuthContext);
-    const {userAuthenticated}= authContext;
+    const authContext = useContext(AuthContext);
+    const { userAuthenticated } = authContext;
 
     useEffect(() => {
         userAuthenticated()
