@@ -10,23 +10,15 @@ import {
 export default (state, action) => {
     switch (action.type) {
         case SIGNUP_SUCCESS:
+        case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token)
             return {
                 ...state,
+                token: action.payload.token,
                 authenticated: true,
                 message: null
             }
         case SIGNUP_FAILURE:
-            localStorage.removeItem('token');
-            return {
-                ...state,
-                token: null,
-                message: action.payload
-            }
-        case LOGIN_SUCCESS:
-            return {
-                alert: action.payload
-            }
         case LOGIN_FAILURE:
             localStorage.removeItem('token');
             return {

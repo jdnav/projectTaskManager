@@ -17,11 +17,11 @@ const SignUp = (props) => {
 
     // If user is already auth
     useEffect(() => {
-        if(authenticated) {
+        if (authenticated) {
             props.history.push('/projects');
         }
 
-        if(message) {
+        if (message) {
             showAlert(message.msg, message.category);;
         }
 

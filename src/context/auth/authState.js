@@ -77,6 +77,35 @@ const AuthState = props => {
         }
     }
 
+    // Login function
+    const login = async data => {
+        try {
+            // request
+            const response = await clientAxios.post('/api/auth', data);
+
+            // Dispatch action
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: response.data // It will be "token"
+            });
+            
+            // Get user info
+            userAuthenticated();
+
+        } catch (error) {
+            console.log(error);
+            // Create alert
+            const alert = {
+                msg: error.response.data.msg,
+                category: 'error'
+            }
+            dispatch({
+                type: LOGIN_FAILURE,
+                payload: alert
+            })
+        }
+    }
+
     return (
         <authContext.Provider
             value={{
@@ -84,7 +113,9 @@ const AuthState = props => {
                 authenticated: state.authenticated,
                 user: state.user,
                 message: state.message,
-                registerUser
+                registerUser,
+                userAuthenticated,
+                login
             }}
         >
             {props.children}
