@@ -20,7 +20,8 @@ const AuthState = props => {
         token: localStorage.getItem('token'),
         authenticated: null,
         user: null,
-        message: null
+        message: null,
+        isLoading: true // to avoid "flash" effect when checking authenticatedUser
     };
 
     // hook
@@ -120,6 +121,7 @@ const AuthState = props => {
                 authenticated: state.authenticated,
                 user: state.user,
                 message: state.message,
+                isLoading: state.isLoading,
                 registerUser,
                 userAuthenticated,
                 login,

@@ -16,7 +16,8 @@ export default (state, action) => {
                 ...state,
                 token: action.payload.token,
                 authenticated: true,
-                message: null
+                message: null,
+                isLoading: false
             }
         case SIGNUP_FAILURE:
         case LOGIN_FAILURE:
@@ -27,13 +28,15 @@ export default (state, action) => {
                 token: null,
                 user: null,
                 authenticated: false,
-                message: action.payload
+                message: action.payload,
+                isLoading: false
             }
         case GET_USER:
             return {
                 ...state,
                 user: action.payload,
-                authenticated: true
+                authenticated: true,
+                isLoading: false
             }
         default:
             return state;

@@ -10,6 +10,8 @@ import AlertState from './context/alerts/alertState';
 import AuthState from './context/auth/authState';
 // to set token in header
 import tokenAuth from './config/tokenAuth';
+// Hihger order component (Route check)
+import PrivateRoute from "./components/routes/privateRoute";
 
 // Check whether there is token and set it in headers
 const token = localStorage.getItem('token');
@@ -29,7 +31,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Login} />
                 <Route exact path="/sign-up" component={SignUp} />
-                <Route exact path="/projects" component={Projects} />
+                <PrivateRoute exact path="/projects" component={Projects} /> {/* This route is secured */}
               </Switch>
             </Router>
 
