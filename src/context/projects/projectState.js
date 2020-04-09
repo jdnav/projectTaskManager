@@ -8,6 +8,7 @@ import {
     VALIDATE_PROJECT_FORM,
     CURRENT_PROJECT,
     DELETE_PROJECT,
+    DELETE_PROJECT_ERROR
 } from '../../types';
 // for dev purposes
 // import { v4 as uuid } from 'uuid';
@@ -26,7 +27,8 @@ const ProjectState = props => {
         form: false,
         projects: [],
         errorForm: false,
-        currentProject: ''
+        currentProject: null,
+        message: null
     }
 
     // Dispatch to execute actions
@@ -86,13 +88,22 @@ const ProjectState = props => {
     const deleteProject = async (projectId) => {
 
         try {
-            await clientAxios.delete(`/api/projects/${projectId}`);
+            await clientAxios.delete(`/api/projectsaaa/${projectId}`);
             dispatch({
                 type: DELETE_PROJECT,
                 payload: projectId
             })
         } catch (error) {
             console.log(error);
+            const alert = {
+                msg: 'There was an error',
+                categoria: 'alert-error'
+            }
+
+            dispatch({
+                type: DELETE_PROJECT_ERROR,
+                payload: alert
+            })
         }
     }
 
@@ -106,6 +117,7 @@ const ProjectState = props => {
                 projects: state.projects,
                 errorForm: state.errorForm,
                 currentProject: state.currentProject,
+                message: state.message,
                 displayForm,
                 getProjects,
                 addProject,
