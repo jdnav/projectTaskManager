@@ -34,7 +34,7 @@ const TaskState = props => {
     const [state, dispatch] = useReducer(taskReducer, taskState);
 
     // GET project tasks
-    const getProjectTasks = project => {
+    const getProjectTasks = async project => {
 
         try {
             const result = await clientAxios.get('/api/tasks', {params: {project}});
@@ -64,13 +64,13 @@ const TaskState = props => {
     }
 
     // DELETE task
-    const deleteTask = async task => {
+    const deleteTask = async (taskId, project) => {
 
         try {
-            await clientAxios.delete(`/api/tasks/${id}`);
+            await clientAxios.delete(`/api/tasks/${taskId}`, { params: { project }});
             dispatch({
                 type: DELETE_TASK,
-                payload: task
+                payload: taskId
             })
         } catch (error) {
             console.log(error);

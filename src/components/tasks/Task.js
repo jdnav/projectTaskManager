@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProyectContext from "../../context/projects/projectContext";
-import TaskContext from "../../context/task/taskContext";
+import TaskContext from "../../context/tasks/taskContext";
 
 const Task = ({ task }) => {
   // PROJECT context to get the current one
@@ -9,13 +9,18 @@ const Task = ({ task }) => {
 
   // TASKS context functions
   const tareasContext = useContext(TaskContext);
-  const { getProjectTasks, saveCurrentTask, deleteTask, editTask } = tareasContext;
+  const {
+    getProjectTasks,
+    saveCurrentTask,
+    deleteTask,
+    editTask,
+  } = tareasContext;
 
-  // Extraer el proyecto
+  // Get current project ID
   const [currentProject] = project;
 
   // Función que se ejecuta cuando el usuario presiona el btn de eliminar tarea
-  const deleteTask = (id) => {
+  const onDeleteTask = (id) => {
     deleteTask(id, currentProject._id);
     getProjectTasks(currentProject.id);
   };
@@ -23,15 +28,15 @@ const Task = ({ task }) => {
   // This function change the status of a task
   const changeStatus = (task) => {
     if (task.status) {
-        task.status = false;
+      task.status = false;
     } else {
-        task.status = true;
+      task.status = true;
     }
     editTask(task);
   };
 
   // Add current task when the user wants to edit it
-  const editTask = (task) => {
+  const onEditTask = (task) => {
     saveCurrentTask(task);
   };
 
@@ -61,14 +66,14 @@ const Task = ({ task }) => {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => editTask(task)}
+          onClick={() => onEditTask(task)}
         >
           Edit
         </button>
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => deleteTask(task._id)}
+          onClick={() => onDeleteTask(task._id)}
         >
           Delete
         </button>
