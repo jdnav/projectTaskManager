@@ -5,7 +5,11 @@ import clientAxios from '../../config/axios';
 import {
     GET_TASKS_PROJECT,
     ADD_TASK,
-    VALIDATE_TASK_FORM
+    VALIDATE_TASK_FORM,
+    EDIT_TASK,
+    DELETE_TASK,
+    SELECT_CURRENT_TASK,
+    CLEAN_TASK
 } from '../../types';
 
 const TaskState = props => {
@@ -43,7 +47,6 @@ const TaskState = props => {
         } catch (error) {
             
         }
-
     }
 
     // ADD task
@@ -58,8 +61,49 @@ const TaskState = props => {
         } catch (error) {
             console.log(error);
         }
-        
+    }
 
+    // DELETE task
+    const deleteTask = async task => {
+
+        try {
+            await clientAxios.delete(`/api/tasks/${id}`);
+            dispatch({
+                type: DELETE_TASK,
+                payload: task
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // EDIT task
+    const editTask = async task => {
+
+        try {
+            await clientAxios.put(`/api/tasks/${task._id}`);
+            dispatch({
+                type: EDIT_TASK,
+                payload: task
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Selected task
+    const saveCurrentTask = task => {
+        dispatch({
+            type: SELECT_CURRENT_TASK,
+            payload: task
+        })
+    }
+
+    // Deselect task that was selected
+    const deselectTask = () => {
+        dispatch({
+            type: CLEAN_TASK
+        })
     }
 
     // Display error when name of task is invalid
@@ -80,6 +124,10 @@ const TaskState = props => {
                 errorTask: state.errorTask,
                 getProjectTasks,
                 addTask,
+                saveCurrentTask,
+                editTask,
+                deleteTask,
+                deselectTask,
                 displayError
             }}>
             {props.children}

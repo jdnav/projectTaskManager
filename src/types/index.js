@@ -11,6 +11,10 @@ export const DELETE_PROJECT_ERROR = 'DELETE PROJECT ERROR';
 export const GET_TASKS_PROJECT = 'GET TASKS PROJECT';
 export const ADD_TASK = 'ADD TASK';
 export const VALIDATE_TASK_FORM = 'VALIDATE TASK FORM';
+export const DELETE_TASK = 'DELETE TASK';
+export const SELECT_CURRENT_TASK = 'SELECT CURRENT TASK';
+export const EDIT_TASK = 'EDIT TASK';
+export const CLEAN_TASK = 'CLEAN TASK';
 
 // ALERTS
 export const SHOW_ALERT = 'SHOW ALERT';
