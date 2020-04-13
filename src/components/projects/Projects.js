@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from "react";
 import Sidebar from "../layout/Sidebar";
 import Bar from "../layout/Bar";
 import FormTask from "../tasks/FormTask";
@@ -8,32 +8,30 @@ import AuthContext from "../../context/auth/authContext";
 
 // Typing "rafce" react arrow function comp with ES7
 const Projects = () => {
+  // Auth info
+  const authContext = useContext(AuthContext);
+  const { userAuthenticated } = authContext;
 
-    // Auth info
-    const authContext = useContext(AuthContext);
-    const { userAuthenticated } = authContext;
+  // Called when an event occurs
+  useEffect(() => {
+    userAuthenticated();
+    // eslint-disable-next-line
+  }, []);
 
-    // Called when an event occurs
-    useEffect(() => {
-        userAuthenticated()
-    }, [])
+  return (
+    <div className="container-app">
+      <Sidebar />
+      <div className="main-section">
+        <Bar />
+        <main>
+          <FormTask />
+          <div className="container-tasks">
+            <ListTasks />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
 
-    return (
-        <div className="container-app">
-            <Sidebar />
-            <div className="main-section">
-                <Bar />
-                <main>
-                    <FormTask />
-                    <div className="container-tasks">
-                        <ListTasks />
-                    </div>
-                </main>
-            </div>
-        </div>
-
-    )
-}
-
-export default Projects
-
+export default Projects;

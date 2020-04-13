@@ -25,7 +25,7 @@ const SignUp = (props) => {
             showAlert(message.msg, message.category);;
         }
 
-    }, [message, authenticated, props.history])
+    }, [message, authenticated, props.history, showAlert])
 
     // State for SignUp
     const [user, saveUser] = useState({

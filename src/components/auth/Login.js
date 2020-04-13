@@ -26,7 +26,7 @@ const Login = (props) => {
             showAlert(message.msg, message.category);;
         }
 
-    }, [message, authenticated, props.history])
+    }, [message, authenticated, props.history, showAlert])
 
     // State for login
     const [user, saveUser] = useState({
