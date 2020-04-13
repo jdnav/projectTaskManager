@@ -45,8 +45,7 @@ const FormTask = () => {
         }
 
         // add task
-        task.projectId = getCurrentProject.id;
-        task.state = false;
+        task.project = getCurrentProject._id;
         addTask(task);
 
         // Get all tasks again with the new task added

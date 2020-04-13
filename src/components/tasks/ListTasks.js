@@ -35,7 +35,7 @@ const ListTasks = () => {
             <button
                 type="button"
                 className="btn btn-delete"
-                onClick={() => deleteProject(getCurrentProject._id)}>
+                onClick={() => deleteProject(getCurrentProject._id)}> 
                 Delete project
             </button>
 
